@@ -1,6 +1,7 @@
-package br.com.catalog.domain;
+package br.com.catalog.domain.api;
 
 
+import br.com.catalog.domain.api.Api;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

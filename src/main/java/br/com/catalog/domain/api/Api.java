@@ -1,4 +1,4 @@
-package br.com.catalog.domain;
+package br.com.catalog.domain.api;
 
 import org.apache.commons.lang3.StringUtils;
 
