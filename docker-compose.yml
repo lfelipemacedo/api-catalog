@@ -1,0 +1,13 @@
+version: '4'
+services:
+  mysql:
+    container_name: mysql
+    image: mysql:8.0
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./init.sql:/data/application/init.sql
+    environment:
+      MYSQL_DATABASE: api_catalog
+      MYSQL_ROOT_PASSWORD: catalog
+      MYSQL_HOST: mysql
