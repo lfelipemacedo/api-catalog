@@ -2,14 +2,14 @@ package br.platform.api_catalog.api.controller;
 
 import br.platform.api_catalog.api.model.CreateApiRequest;
 import br.platform.api_catalog.api.model.CreateApiResponse;
+import br.platform.api_catalog.api.model.UpdateApiRequest;
+import br.platform.api_catalog.api.model.UpdateApiResponse;
+import br.platform.api_catalog.api.repository.entity.ApiJpaEntity;
 import br.platform.api_catalog.api.service.ApiService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -32,6 +32,11 @@ public class ApiController {
         return ResponseEntity
                 .created(uri)
                 .body(response);
+    }
+
+    @PutMapping("/{id}")
+    public ResponseEntity<UpdateApiResponse> update(@Valid @PathVariable("id") Long id, @RequestBody UpdateApiRequest request) {
+        return ResponseEntity.ok(service.update(id, request));
     }
 
 }

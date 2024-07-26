@@ -63,4 +63,10 @@ public class ApiJpaEntity {
     public void setDescription(String description) {
         this.description = description;
     }
+
+    public ApiJpaEntity update(String name, String description) {
+        this.name = name;
+        this.description = description;
+        return this;
+    }
 }
