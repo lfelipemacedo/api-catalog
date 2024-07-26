@@ -4,6 +4,7 @@ import br.platform.api_catalog.controller.model.CreateApiRequest;
 import br.platform.api_catalog.controller.model.CreateApiResponse;
 import br.platform.api_catalog.repository.ApiRepository;
 import br.platform.api_catalog.repository.entity.ApiJpaEntity;
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -26,7 +27,7 @@ public class ApiController {
     }
 
     @PostMapping(consumes = {"application/json"})
-    public ResponseEntity<CreateApiResponse> create(@RequestBody CreateApiRequest request, UriComponentsBuilder uriBuilder) {
+    public ResponseEntity<CreateApiResponse> create(@Valid @RequestBody CreateApiRequest request, UriComponentsBuilder uriBuilder) {
         ApiJpaEntity createdApi = repository.save(ApiJpaEntity.create(request.name(), request.description()));
         URI uri = uriBuilder.buildAndExpand("/{id}").expand(createdApi.getId()).toUri();
         return ResponseEntity.created(uri)
