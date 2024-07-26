@@ -1,4 +1,4 @@
-package br.platform.api_catalog.controller.model;
+package br.platform.api_catalog.api.model;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotBlank;
